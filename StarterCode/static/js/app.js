@@ -1,12 +1,13 @@
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json"
 
 function init() {
-    let dropdownmenu = d3.select("#selDataset");
+
     //Retrieve Json data
         d3.json(url).then(function(Data) {
             console.log(Data);
     
-            let namelist = Data.name;
+            let namelist = Data.names;
+            let dropdownmenu = d3.select("#selDataset");
     
             namelist.forEach((name) => {
                 dropdownmenu.append("option").text(name).property("value", name);
