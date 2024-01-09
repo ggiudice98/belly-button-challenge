@@ -3,7 +3,7 @@ const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/
 function init() {
 
     //Retrieve Json data
-        d3.json(url), then (function(Data){
+        d3.json(url).then(function(Data) {
             console.log(Data);
     
             let namelist = Data.name;
@@ -39,7 +39,7 @@ function demographics(options) {
 
         //Iterate through values
         enteredvalues.forEach(([key,value]) => {
-            d3.select("sample-metadata").append("h5").text(`${key}: ${value}`);
+            d3.select("#sample-metadata").append("h5").text(`${key}: ${value}`);
 
         });
 
@@ -66,8 +66,7 @@ function bar(options) {
         //Trace Data
         let trace = [{
             x : firstset.sample_values.slice(0,10).reverse(),
-            y : firstset.otu_ids.slice(0,10).map((otu_id) => `otu ${otu_id}`).reserve(),
-            text: firstset.otu_labels.slice(0,10).reserve(),
+            y: firstset.otu_ids.slice(0,10).map((otu_id) => `otu ${otu_id}`).reverse(),
             type: "bar",
             marker: {
                 color: "rgb(160,178,239"
@@ -76,7 +75,7 @@ function bar(options) {
         }];
 
         //Plot Chart using plotly
-        Plotly.newplot("bar", trace);
+        Plotly.newPlot("bar", trace);
     });
 }
 
@@ -109,7 +108,7 @@ function bubble(options) {
         };
 
         //Plot bubble chart using plotly
-        Plotly.newplot("bubble", trace, layouts);
+        Plotly.newPlot("bubble", trace, layouts);
     });
 
 
